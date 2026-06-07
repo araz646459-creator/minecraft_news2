@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>کرافت‌نیوز | اخبار رسمی ماینکرافت</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(145deg, #c8eeff 0%, #e2f7ff 100%);
+            color: #1e2a2f;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: #00738b;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-bottom: 4px solid #b2ebf2;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            flex-wrap: wrap;
+        }
+        .logo h1 {
+            font-size: 1.9rem;
+            color: #ffffff;
+            text-shadow: 2px 2px 0 #004d5f;
+        }
+        .logo p {
+            font-size: 0.8rem;
+            color: #d1f5ff;
+        }
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #f0fdfe;
+            font-weight: 500;
+            transition: 0.3s;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+        }
+        nav ul li a:hover {
+            border-bottom-color: #b2ebf2;
+            color: #ffffff;
+        }
+        @media (max-width: 700px) {
+            .header-flex {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        .hero {
+            background: #0097b2;
+            margin: 30px 0;
+            padding: 30px 25px;
+            border-radius: 35px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            border: 1px solid #b2ebf2;
+            color: white;
+        }
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+        .hero span {
+            background-color: #005f73;
+            padding: 5px 12px;
+            border-radius: 60px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 35px;
+            margin: 40px 0;
+        }
+
+        .news-card {
+            background: #00a5c3;
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #b2ebf2;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+        }
+        .news-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+            background: #00b8d9;
+        }
+        .news-img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 3px solid #b2ebf2;
+            background-color: #e0f2f1;
+            color: #00695c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            text-align: center;
+        }
+        .news-content {
+            padding: 20px;
+            color: #f3fffc;
+        }
+        .news-title {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+        .news-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 0.8rem;
+            color: #d9f5ff;
+            margin-bottom: 15px;
+        }
+        .news-summary {
+            margin-bottom: 20px;
+            color: #effffa;
+        }
+        .read-more {
+            background-color: #005f73;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .read-more:hover {
+            background-color: #007a93;
+            transform: scale(1.02);
+        }
+
+        .sidebar {
+            background: #0097b2;
+            border-radius: 28px;
+            padding: 20px;
+            border: 1px solid #b2ebf2;
+            height: fit-content;
+            color: #f0feff;
+        }
+        .sidebar h3 {
+            font-size: 1.6rem;
+            border-right: 6px solid #b2ebf2;
+            padding-right: 15px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        .hot-news-list {
+            list-style: none;
+        }
+        .hot-news-list li {
+            margin-bottom: 18px;
+            border-bottom: 1px dashed #7acbd8;
+            padding-bottom: 12px;
+        }
+        .hot-news-list a {
+            text-decoration: none;
+            color: #e3fffa;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .hot-news-list a:hover {
+            color: #ffffff;
+            padding-right: 5px;
+        }
+        .hot-date {
+            font-size: 0.7rem;
+            display: block;
+            color: #caf7ff;
+            margin-top: 6px;
+        }
+
+        footer {
+            background: #005f73;
+            text-align: center;
+            padding: 30px 10px;
+            margin-top: 50px;
+            border-top: 2px solid #b2ebf2;
+            font-size: 0.85rem;
+            color: #e2f7ff;
+        }
+        footer a {
+            color: #b2ebf2;
+        }
+
+        .dev-note {
+            background: #00a5c3;
+            padding: 12px;
+            border-radius: 16px;
+            text-align: center;
+            margin: 15px 0;
+            font-size: 0.9rem;
+            color: #f0fefd;
+        }
+
+        @media (max-width: 800px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        button {
+            background: none;
+            border: none;
+        }
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.5rem;
+            color: #005f73;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-flex">
+            <div class="logo">
+                <h1>⚡ کرافت‌نیوز</h1>
+                <p>اولین خبرنامه فارسی طرفداران ماینکرفت</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">خانه</a></li>
+                    <li><a href="#">جدیدترین خبرها</a></li>
+                    <li><a href="#">آپدیت‌ها</a></li>
+                    <li><a href="#">مودها</a></li>
+                    <li><a href="#">تماس</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <h2>🎮 به‌روزترین اخبار جهان ماینکرفت</h2>
+            <p>از آپدیت 1.21 تا ایونت‌های لایو Mojang — همه چیز را اینجا بخوانید</p>
+            <span>🔥 بروزرسانی: <span id="currentDate"></span></span>
+        </div>
+
+        <div class="content-grid">
+            <main id="newsContainer">
+                <div class="loading">در حال بارگذاری جدیدترین اخبار ماینکرفت...</div>
+            </main>
+
+            <aside class="sidebar">
+                <h3>🔥 داغ امروز</h3>
+                <ul class="hot-news-list">
+                    <li><a href="#">🔴 موجنگ: آپدیت بعدی روی بهینه‌سازی متمرکز است</a><span class="hot-date">۲ ساعت پیش</span></li>
+                    <li><a href="#">🧱 رکوردشکنی ماینکرفت: ۳۰۰ میلیون نسخه فروش رفت!</a><span class="hot-date">دیروز</span></li>
+                    <li><a href="#">⚔️ ایونت لایو 2025؛ معرفی سلاح جدید "Mace"</a><span class="hot-date">۳ روز پیش</span></li>
+                    <li><a href="#">🎮 ماینکرفت ارث :  نسخه لگو هم به بازار آمد</a><span class="hot-date">۵ روز پیش</span></li>
+                    <li><a href="#">🌍 سرورهای محبوب ایرانی جایزه گرفتند</a><span class="hot-date">هفته گذشته</span></li>
+                </ul>
+                <div style="margin-top: 35px; background: #005f73; border-radius: 18px; padding: 15px; color: white;">
+                    <p style="font-size: 0.9rem;">📰 <strong>خبر فوری:</strong> Mojang درحال کار روی حالت جدیدی بنام "چندجهانی" است.</p>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 کرافت‌نیوز — تمامی حقوق برای طرفداران ماینکرفت محفوظ است.</p>
+            <p style="margin-top: 8px;">🚀 این سایت با عشق به دنیای مکعب‌ها ساخته شده | اخبار غیررسمی اما دقیق</p>
+            <p style="font-size: 0.7rem; margin-top: 12px;">پیشنهاد: برای هاست رایگان از <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> یا <a href="https://www.netlify.com/" target="_blank">Netlify</a> استفاده کنید.</p>
+        </div>
+    </footer>
+
+    <script>
+        // تابع برای نمایش تاریخ امروز به صورت شمسی
+        function showCurrentDate() {
+            const today = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const persianDate = today.toLocaleDateString('fa-IR', options);
+            document.getElementById('currentDate').innerText = persianDate;
+        }
+        showCurrentDate();
+
+        // تابع برای دریافت اخبار از API رسمی موجنگ
+        async function fetchMinecraftNews() {
+            const newsContainer = document.getElementById('newsContainer');
+            try {
+                const response = await fetch('https://launchermeta.mojang.com/mc/news.json');
+                if (!response.ok) {
+                    throw new Error('خطا در دریافت اخبار');
+                }
+                const newsData = await response.json();
+                displayNews(newsData);
+            } catch (error) {
+                console.error('خطا در دریافت اخبار:', error);
+                newsContainer.innerHTML = '<div class="loading">متأسفانه در حال حضر امکان نمایش اخبار وجود ندارد. لطفاً دقایقی دیگر تلاش کنید.</div>';
+            }
+        }
+
+        // تابع برای نمایش اخبار در صفحه
+        function displayNews(news) {
+            const newsContainer = document.getElementById('newsContainer');
+            if (!news || news.length === 0) {
+                newsContainer.innerHTML = '<div class="loading">هیچ خبری یافت نشد.</div>';
+                return;
+            }
+
+            let newsHTML = '';
+            for (let i = 0; i < Math.min(news.length, 5); i++) {
+                const article = news[i];
+                const title = article.title || 'بدون عنوان';
+                const summary = article.summary || article.excerpt || 'توضیحاتی برای این خبر موجود نیست.';
+                const date = new Date(article.date).toLocaleDateString('fa-IR');
+                const imageUrl = article.image?.url || null;
+
+                newsHTML += `
+                    <article class="news-card">
+                        ${imageUrl ? `<img class="news-img" src="${imageUrl}" alt="${title}">` : '<div class="news-img">🎮 تصویر خبر</div>'}
+                        <div class="news-content">
+                            <h2 class="news-title">${title}</h2>
+                            <div class="news-meta">
+                                <span>📅 ${date}</span>
+                                <span>👾 بازدید: ${Math.floor(Math.random() * 2000)}</span>
+                            </div>
+                            <p class="news-summary">${summary.substring(0, 200)}${summary.length > 200 ? '...' : ''}</p>
+                            <a href="${article.link || '#'}" class="read-more" target="_blank" rel="noopener noreferrer">ادامه مطلب →</a>
+                        </div>
+                    </article>
+                `;
+            }
+
+            newsHTML += `
+                <div class="dev-note">
+                    💡 نکته: برای اضافه کردن خبر جدید، کافی است یک <strong>کپی از ساختار <code>article.news-card</code></strong> گرفته و تصویر، عنوان و متن آن را تغییر دهید. بدون نیاز به کدنویسی اضافه!
+                </div>
+            `;
+            newsContainer.innerHTML = newsHTML;
+        }
+
+        // اجرای تابع دریافت اخبار هنگام بارگذاری صفحه
+        fetchMinecraftNews();
+    </script>
+</body>
+</html>
